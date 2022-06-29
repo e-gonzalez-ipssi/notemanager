@@ -6,6 +6,8 @@ import ImageSelector from "../component/ImageSelector";
 import BasicCheckBox from "../component/BasicCheckbox";
 import BasicTextInput from "../component/BasicTextInput";
 import useUser from "../hooks/user";
+import useApi from "../hooks/api";
+import BasicButton from "../component/BasicButton";
 
 export default function New({ navigation }: { navigation: any }) {
     const { color } = useTheme();
@@ -13,16 +15,35 @@ export default function New({ navigation }: { navigation: any }) {
     const [auteur, setAuteur] = useState("");
     const [titre, setTitre] = useState("");
     const [texte, setTexte] = useState("");
-    const [tags, setTags] = useState("");
+    const [tags, setTags] = useState([] as string[]);
     const [image, setImage] = useState("");
 
     const { user } = useUser();
+
+    const handleTags = (rawValue: string) => {
+        let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
+        let found = rawValue.match(tagRegex)
+
+        if (found) { setTags(found) }
+    }
 
     useEffect(() => {
         if (user !== "" && auteur === "") {
             setAuteur(user)
         }
     }, [auteur]);
+
+    const handleConfirm = async () => {
+        await useApi("POST", "note", {
+            title: titre,
+            author: auteur,
+            anonym: anonymous,
+            tags: tags,
+            text: texte,
+            image: image
+        })
+    }
+
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
@@ -77,12 +98,15 @@ export default function New({ navigation }: { navigation: any }) {
                 Tags
             </Text>
             <BasicTextInput
-                setInput={setTags}
+                setInput={handleTags}
                 placeholder="Ex: Pain au chocolat"
             />
             <ImageSelector
                 onImage={setImage}
             />
+            <BasicButton onPress={handleConfirm} >
+                Créer la note
+            </BasicButton>
         </SafeAreaView>
     )
 }

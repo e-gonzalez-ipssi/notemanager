@@ -13,6 +13,8 @@ export default function Home({ navigation }: { navigation: any }) {
     const [search, setSearch] = useState("");
     let interval: any;
 
+    console.log(notes)
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await useApi("GET", "note")
