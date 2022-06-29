@@ -31,13 +31,7 @@ export default function Home({ navigation }: { navigation: any }) {
             </Text>
             <SearchBar setInput={setSearch} />
             {notes.map((note, index) => {
-<<<<<<< HEAD
                 return <Text key={index}>{note.title}</Text>
-=======
-                return(
-                    <Text key={index}>{note.title}</Text>
-                );
->>>>>>> d844bcedddb5842fe10451fa0d2d64f9d33eb890
             })}
         </SafeAreaView>
     )
