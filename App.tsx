@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './src/features/Home';
-import Detail from './src/features/Detail';
+import Detail from './src/features/Perso';
 import Feather from "@expo/vector-icons/Feather"
 
 const Tab = createBottomTabNavigator();
