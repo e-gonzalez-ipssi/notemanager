@@ -5,5 +5,5 @@ export interface Note {
     anonyme: boolean,
     tags: string[],
     mainText: string,
-    linkedPhoto?: string,
+    image?: string,
 }
