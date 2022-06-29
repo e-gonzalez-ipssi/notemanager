@@ -4,8 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './src/features/Home';
 import New from './src/features/New';
 import Perso from './src/features/Perso';
-import { AntDesign, Entypo, Ionicons} from '@expo/vector-icons'
-import useTheme from './src/hooks/theme';
+import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
@@ -13,7 +12,7 @@ export const theme = createContext({})
 
 export default function App() {
 	const [dark, setDark] = useState(false);
-	const {color}=useTheme();
+
 	return (
 		<theme.Provider value={{ dark, setDark }}>
 			<NavigationContainer>
@@ -23,7 +22,7 @@ export default function App() {
 						component={Home}
 						options={{
 							tabBarIcon: ({ focused, color, size }) => {
-								return <Entypo name="folder" size={24} color="#27569C"/>;
+								return <Entypo name="folder" size={24} color="#27569C" />;
 							},
 						}}
 					/>
@@ -32,7 +31,7 @@ export default function App() {
 						component={New}
 						options={{
 							tabBarIcon: ({ focused, color, size }) => {
-								return <AntDesign name="form" size={24} color="#27569C"/>;
+								return <AntDesign name="form" size={24} color="#27569C" />;
 							},
 						}}
 					/>
@@ -41,7 +40,7 @@ export default function App() {
 						component={Perso}
 						options={{
 							tabBarIcon: ({ focused, color, size }) => {
-								return <Ionicons name="ios-person-circle" size={24} color="#27569C"/>;
+								return <Ionicons name="ios-person-circle" size={24} color="#27569C" />;
 							},
 						}}
 					/>
