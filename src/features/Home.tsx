@@ -9,13 +9,15 @@ import { Note } from "../utils/note";
 export default function Home({ navigation }: { navigation: any }) {
     const { color } = useTheme();
     const [notes, setNotes] = useState([] as Note[]);
+    let interval: any;
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await useApi("GET", "note")
             setNotes(response)
         }
-        fetchData()
+        interval = setInterval(() => fetchData(), 5000)
+        return () => clearInterval(interval)
     }, [])
 
     return (
