@@ -4,6 +4,6 @@ export interface Note {
     author: string,
     anonyme: boolean,
     tags: string[],
-    mainText: string,
+    text: string,
     image?: string,
 }
