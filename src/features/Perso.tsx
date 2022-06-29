@@ -1,19 +1,34 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import BasicButton from "../component/BasicButton";
+import SearchBar from "../component/SearchBar";
 import useTheme from "../hooks/theme";
+import useUser from "../hooks/user";
 
 export default function Perso({ navigation }: { navigation: any }) {
-    const {color}=useTheme();
-    return (
-        <SafeAreaView style={{flex: 1, marginTop:20}}>
-            <Text>
-                Page Perso
-            </Text>
+    const { color } = useTheme();
+    const { user, setUser } = useUser();
 
-            <Text onPress={() => { navigation.navigate("Home") }}>
-                Aller sur la page Home
-            </Text>
+    const [value, setValue] = useState("");
+
+    const handleConnect = () => {
+        setUser(value)
+    }
+
+    return (
+        <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
+            <SearchBar
+                placeholder={user === "" ? "Enter your name" : user}
+                setInput={setValue}
+            />
+            <BasicButton
+                textStyle={{
+                    color: color.success
+                }}
+                onPress={handleConnect}
+            >
+                Change your name
+            </BasicButton>
         </SafeAreaView>
     )
 }
