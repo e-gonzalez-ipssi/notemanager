@@ -4,6 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './src/features/Home';
 import Detail from './src/features/Perso';
 import Feather from "@expo/vector-icons/Feather"
+import New from './src/features/New';
+import Perso from './src/features/Perso';
+import { AntDesign, Entypo, Ionicons} from '@expo/vector-icons'
 
 const Tab = createBottomTabNavigator();
 
@@ -20,11 +23,28 @@ export default function App() {
 						component={Home}
 						options={{
 							tabBarIcon: ({ focused, color, size }) => {
-								return <Feather name="activity" size={30} />;
+								return <Entypo name="folder" size={24} color="black" />;
 							},
 						}}
 					/>
-					<Tab.Screen name="Detail" component={Detail} />
+					<Tab.Screen
+						name="New"
+						component={New}
+						options={{
+							tabBarIcon: ({ focused, color, size }) => {
+								return <AntDesign name="form" size={24} color="black"/>;
+							},
+						}}
+					/>
+					<Tab.Screen
+						name="Perso"
+						component={Perso}
+						options={{
+							tabBarIcon: ({ focused, color, size }) => {
+								return <Ionicons name="ios-person-circle" size={24} color="black" />;
+							},
+						}}
+					/>
 				</Tab.Navigator>
 			</NavigationContainer>
 		</theme.Provider>
