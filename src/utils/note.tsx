@@ -1,5 +1,5 @@
 export interface Note {
-    _id: number,
+    _id: number, //ignorer pour le moment 
     title: string,
     author: string,
     anonyme: boolean,

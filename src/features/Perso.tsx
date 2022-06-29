@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BasicButton from "../component/BasicButton";
-import SearchBar from "../component/SearchBar";
+import BasicTextInput from "../component/BasicTextInput";
 import useTheme from "../hooks/theme";
 import useUser from "../hooks/user";
 
@@ -17,7 +17,7 @@ export default function Perso({ navigation }: { navigation: any }) {
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
-            <SearchBar
+            <BasicTextInput
                 placeholder={user === "" ? "Enter your name" : user}
                 setInput={setValue}
             />
