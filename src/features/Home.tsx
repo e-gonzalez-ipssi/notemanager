@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "../component/BasicTextInput";
 import ThemeButton from "../component/ThemeButton";
@@ -27,14 +27,16 @@ export default function Home({ navigation }: { navigation: any }) {
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
-            <ThemeButton />
-            <Text style={{ color: color.text }}>
-                Page Home
-            </Text>
-            <SearchBar setInput={setSearch} />
-            {notes.map((note, index) => {
-                return <Text key={index}>{note.title}</Text>
-            })}
+            <ScrollView>
+                <ThemeButton />
+                <Text style={{ color: color.text }}>
+                    Page Home
+                </Text>
+                <SearchBar setInput={setSearch} />
+                {notes.map((note, index) => {
+                    return <Text key={index}>{note.title}</Text>
+                })}
+            </ScrollView>
         </SafeAreaView>
     )
 }
