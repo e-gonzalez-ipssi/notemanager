@@ -1,9 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import useTheme from "../hooks/theme";
 
 export default function Perso({ navigation }: { navigation: any }) {
+    const {color}=useTheme();
     return (
-        <View>
+        <SafeAreaView style={{flex: 1, marginTop:20}}>
             <Text>
                 Page Perso
             </Text>
@@ -11,6 +14,6 @@ export default function Perso({ navigation }: { navigation: any }) {
             <Text onPress={() => { navigation.navigate("Home") }}>
                 Aller sur la page Home
             </Text>
-        </View>
+        </SafeAreaView>
     )
 }
