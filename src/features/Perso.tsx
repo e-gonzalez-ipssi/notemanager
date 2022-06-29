@@ -1,11 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function Detail({ navigation }: { navigation: any }) {
+export default function Perso({ navigation }: { navigation: any }) {
     return (
         <View>
             <Text>
-                Page Detail
+                Page Perso
             </Text>
 
             <Text onPress={() => { navigation.navigate("Home") }}>

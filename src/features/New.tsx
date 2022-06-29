@@ -6,7 +6,7 @@ export default function New({ navigation }: { navigation: any }) {
     return (
         <View>
             <Text>
-                Page Home
+                Page New
             </Text>
             <Text onPress={() => { navigation.navigate("Detail") }}>
                 Aller sur la page Detail
