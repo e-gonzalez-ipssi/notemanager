@@ -25,7 +25,7 @@ export default function Home({ navigation }: { navigation: any }) {
                 Page Home
             </Text>
             {notes.map((note, index) => {
-                <Text key={index}>{note.title}</Text>
+                return <Text key={index}>{note.title}</Text>
             })}
         </SafeAreaView>
     )
