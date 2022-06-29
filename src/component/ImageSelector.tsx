@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { launchImageLibraryAsync, MediaTypeOptions } from "expo-image-picker";
 import { Image, View, Button } from "react-native";
+import BasicButton from "./BasicButton";
 
 export default function ImageSelector({ onImage = (uri: string) => { } }: { onImage: (uri: string) => void }) {
     const [image, setImage] = useState<any>(null);
@@ -27,7 +28,12 @@ export default function ImageSelector({ onImage = (uri: string) => { } }: { onIm
 
     return (
         <View>
-            <Button title="Select an image" onPress={() => { picker() }} />
+            <BasicButton
+                style={{ width: 250 }}
+                onPress={() => { picker() }}
+            >
+                Select an image
+            </BasicButton>
             {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
         </View>
 
