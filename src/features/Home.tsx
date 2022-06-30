@@ -65,8 +65,9 @@ export default function Home({ navigation }: { navigation: any }) {
 				<BasicTextInput setInput={handleTags} placeholder="Ex: Test, Esteban, Maths" />
 				<Text>Filtre date</Text>
 				<BasicTextInput setInput={setFiltreDate} placeholder="2022" />
-				<CollapseButton notes={filteredNotes}></CollapseButton>
-
+				<ScrollView>
+					<CollapseButton notes={filteredNotes}></CollapseButton>
+				</ScrollView>
 			</ScrollView>
 		</SafeAreaView>
 	)
