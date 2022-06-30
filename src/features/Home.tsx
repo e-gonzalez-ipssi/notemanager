@@ -22,7 +22,16 @@ export default function Home({ navigation }: { navigation: any }) {
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
       <ThemeButton />
-      <Text style={{ color: color.text }}>Page Home</Text>
+      <Text
+        style={{
+          color: color.text,
+          textAlign: "center",
+          fontSize: 20,
+          fontWeight: "900",
+        }}
+      >
+        Page Home
+      </Text>
       <CollapseButton notes={notes}></CollapseButton>
       {notes.map((note, index) => {
         <Text key={index}>{note.title}</Text>;
