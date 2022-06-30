@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text } from "react-native";
 
 function tagColor(id: number) {
     switch (id % 6) {
@@ -13,44 +13,29 @@ function tagColor(id: number) {
 }
 
 export default function Tags({ tags = [] }: { tags: string[] }) {
-    const [openTags, setOpenTags] = useState(false)
 
     return (
-        <TouchableOpacity
-            onPress={() => setOpenTags((old) => !old)}
-        >
-            <View style={{ flexDirection: "row" }}>
-                {tags.map((tag, index) => {
-                    if (!openTags && index >= 3) {
-                        return
-                    }
-                    return (
-                        <Text
-                            key={index}
-                            style={{
-                                backgroundColor: tagColor(index),
-                                borderRadius: 4,
-                                padding: 3,
-                                marginRight: 4
-                            }}
-                        >
-                            {tag}
-                        </Text>
-                    )
-                })}
-                {!openTags && tags.length > 3 && (
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+            {tags.map((tag, index) => {
+                return (
                     <Text
+                        key={index}
                         style={{
-                            backgroundColor: "lightgrey",
+                            backgroundColor: tagColor(index),
                             borderRadius: 4,
                             padding: 3,
-                            marginRight: 4
+                            marginRight: 4,
+                            marginBottom: 2,
+                            marginTop: 2,
+                            maxWidth: "32%",
+                            overflow: "visible",
                         }}
+                        numberOfLines={1}
                     >
-                        +{tags.length - 3}
+                        {tag}
                     </Text>
-                )}
-            </View>
-        </TouchableOpacity>
+                )
+            })}
+        </View>
     )
 }
