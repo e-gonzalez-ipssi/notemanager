@@ -13,6 +13,8 @@ export const theme = createContext({})
 export default function App() {
 	const [dark, setDark] = useState(false);
 
+	// TODO : faire un state pour la connexion / avoir 2 pages
+
 	return (
 		<theme.Provider value={{ dark, setDark }}>
 			<NavigationContainer>

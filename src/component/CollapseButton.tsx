@@ -21,39 +21,31 @@ export default function CollapseButton({ notes = [] }: { notes: Note[] }) {
 	});
 
 	return (
-		<View
-			style={{
-				alignItems: 'center',
-				justifyContent: 'center',
-				height: "100%"
-			}}
-		>
-			<ScrollView>
-				{noteDisplay.map((note, index) => {
-					return (
-						<TouchableOpacity
-							key={index}
-							style={{
-								backgroundColor: color.secondary,
-								width: 350,
-								margin: 10,
-								borderRadius: 16,
-							}}
-							onPress={() => {
-								setCurrentIndex(index === currentIndex ? null : index);
-							}}
-						>
-							<View style={styles.notestyle}>
-								{note.title}
-								{index === currentIndex && (
-									<View style={styles.contenu}>{note.content}</View>
-								)}
-							</View>
-						</TouchableOpacity>
-					);
-				})}
-			</ScrollView>
-		</View >
+		<ScrollView>
+			{noteDisplay.map((note, index) => {
+				return (
+					<TouchableOpacity
+						key={index}
+						style={{
+							backgroundColor: color.secondary,
+							width: 350,
+							margin: 10,
+							borderRadius: 16,
+						}}
+						onPress={() => {
+							setCurrentIndex(index === currentIndex ? null : index);
+						}}
+					>
+						<View style={styles.notestyle}>
+							{note.title}
+							{index === currentIndex && (
+								<View style={styles.contenu}>{note.content}</View>
+							)}
+						</View>
+					</TouchableOpacity>
+				);
+			})}
+		</ScrollView>
 	);
 }
 

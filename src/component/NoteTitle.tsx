@@ -6,9 +6,9 @@ import { Note } from "../utils/note";
 export default function NoteTitle({ note }: { note: Note }) {
     const { color } = useTheme();
 
-    const image = note.image != "" ?
+    const image = note.image ?
         <Image source={{ uri: note.image }} style={{ width: 40, height: 40, borderRadius: 8 }} /> :
-        <View style={{ width: 40, height: 40, borderRadius: 8, backgroundColor: color.primary }} />;
+        <View style={{ width: 40, height: 40, borderRadius: 8, borderColor: color.primary }} />;
 
     return (
         <View
@@ -16,14 +16,15 @@ export default function NoteTitle({ note }: { note: Note }) {
                 flexDirection: "row",
                 backgroundColor: color.extra,
                 borderRadius: 8,
-                padding: 12
+                padding: 12,
             }}
         >
             {image}
             <Text
                 style={{
                     fontSize: 30,
-                    color: color.text
+                    color: color.text,
+                    marginLeft: 8,
                 }}
             >
                 {note.title}
