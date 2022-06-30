@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BasicButton from "../component/BasicButton";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
+import { Text } from "react-native";
 import useNotes from "../hooks/notes";
 import useTheme from "../hooks/theme";
 import useUser from "../hooks/user";
@@ -33,11 +34,11 @@ export default function Perso({ navigation }: { navigation: any }) {
             />
             <BasicButton
                 textStyle={{
-                    color: color.success
+                    color: "white"
                 }}
                 onPress={handleConnect}
             >
-                Change your name
+                Connect
             </BasicButton>
             {user !== "" && (
                 <CollapseButton notes={filteredNotes} />
