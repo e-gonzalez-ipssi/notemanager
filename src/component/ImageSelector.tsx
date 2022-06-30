@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { launchImageLibraryAsync, MediaTypeOptions } from "expo-image-picker";
-import { Image, View, Button } from "react-native";
+import { Image, View } from "react-native";
 import BasicButton from "./BasicButton";
 
 export default function ImageSelector({ onImage = (uri: string) => { } }: { onImage: (uri: string) => void }) {
