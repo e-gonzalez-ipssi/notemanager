@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text, Image } from "react-native";
 import useTheme from "../hooks/theme";
 import { Note } from "../utils/note";
 
 export default function NoteTitle({ note }: { note: Note }) {
     const { color } = useTheme();
-    const [openTitle, setOpenTitle] = useState(false);
 
     const image = note.image ? (
         <Image
@@ -29,45 +28,25 @@ export default function NoteTitle({ note }: { note: Note }) {
     );
 
     return (
-        <TouchableOpacity
-            onPress={() => {
-                setOpenTitle((old) => !old);
+        <View
+            style={{
+                flexDirection: "row",
+                borderRadius: 8,
+                padding: 12,
+                flexWrap: "wrap"
             }}
         >
-            <View
+            <Text
                 style={{
-                    flexDirection: "row",
-                    borderRadius: 8,
-                    padding: 12,
+                    fontSize: 30,
+                    color: color.text,
+                    marginLeft: 8,
+                    fontWeight: "900",
                 }}
             >
-                {openTitle && (
-                    <Text
-                        style={{
-                            fontSize: 30,
-                            color: color.text,
-                            marginLeft: 8,
-                            fontWeight: "900",
-                        }}
-                    >
-                        {note.title}
-                    </Text>
-                )}
-                {!openTitle && (
-                    <Text
-                        style={{
-                            fontSize: 30,
-                            color: color.text,
-                            marginLeft: 8,
-                            fontWeight: "900",
-                        }}
-                        numberOfLines={1}
-                    >
-                        {note.title}
-                    </Text>
-                )}
-                {image}
-            </View>
-        </TouchableOpacity>
+                {note.title}
+            </Text>
+            {image}
+        </View>
     );
 }

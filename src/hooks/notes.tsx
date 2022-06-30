@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import useApi from "./api";
-import { theme } from "../../App";
 import { Note } from "../utils/note";
+import { notesContext } from "../utils/context";
 
 export default function useNotes() {
-  const { notes, setNotes } = useContext(theme as any);
+  const { notes, setNotes } = useContext(notesContext as any);
 
   const fetchData = async () => {
     const data = await useApi("GET", "note");
