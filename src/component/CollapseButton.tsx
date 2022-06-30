@@ -21,10 +21,11 @@ export default function CollapseButton({ notes = [] }: { notes: Note[] }) {
 	});
 
 	return (
-		<SafeAreaView
+		<View
 			style={{
 				alignItems: 'center',
 				justifyContent: 'center',
+				height: "100%"
 			}}
 		>
 			<ScrollView>
@@ -52,7 +53,7 @@ export default function CollapseButton({ notes = [] }: { notes: Note[] }) {
 					);
 				})}
 			</ScrollView>
-		</SafeAreaView >
+		</View >
 	);
 }
 
