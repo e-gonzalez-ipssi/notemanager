@@ -3,7 +3,6 @@ import { ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
-import useApi from "../hooks/api";
 import useNotes from "../hooks/notes";
 import { Note } from "../utils/note";
 
@@ -66,7 +65,6 @@ export default function Home({ navigation }: { navigation: any }) {
 				<BasicTextInput setInput={handleTags} placeholder="Ex: Test, Esteban, Maths" />
 				<Text>Filtre date</Text>
 				<BasicTextInput setInput={setFiltreDate} placeholder="2022" />
-
 				<CollapseButton notes={filteredNotes}></CollapseButton>
 
 			</ScrollView>

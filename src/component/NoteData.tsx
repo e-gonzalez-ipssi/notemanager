@@ -10,15 +10,7 @@ export default function NoteData({ note }: { note: Note }) {
 				{note.anonym ? "Anonymes" : note.author}
 			</Text>
 			<Text style={{ color: "#ffff" }}>{note.text}</Text>
-			<View style={{ flexDirection: "row" }}>
-				{note.tags.map((tag, index) => {
-					return (
-						<Text style={{ marginRight: 5, color: "#ffff" }} key={index}>
-							{tag}
-						</Text>
-					);
-				})}
-			</View>
+			<Tags tags={note.tags} />
 			<Text style={{ color: "#ffff" }}>{note.creation_date}</Text>
 		</View>
 	);
