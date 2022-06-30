@@ -8,7 +8,6 @@ import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
     const [notes, setNotes] = useState([] as Note[]);
-    const [search, setSearch] = useState("");
     const [filtreName, setFiltreName] = useState("");
     const [filtreTag, setFiltreTag] = useState("");
     const [filtreDate, setFiltreDate] = useState("");
@@ -58,14 +57,12 @@ export default function Home({ navigation }: { navigation: any }) {
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
             <ScrollView>
-                <Text>Recherche</Text>
-                <BasicTextInput setInput={setSearch}/>
                 <Text>Filtre nom</Text>
                 <BasicTextInput setInput={setFiltreName} placeholder="Ex: Test, Esteban, Maths" />
                 <Text>Filtre tag</Text>
                 <BasicTextInput setInput={setFiltreTag} placeholder="Ex: Test, Esteban, Maths" />
                 <Text>Filtre date</Text>
-                <BasicTextInput setInput={setFiltreDate} placeholder="TODO" />
+                <BasicTextInput setInput={setFiltreDate} placeholder="2022" />
                 
                 <CollapseButton notes={filteredNotes}></CollapseButton>
                 
