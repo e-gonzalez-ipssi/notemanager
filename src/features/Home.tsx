@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CollapseButton from "../component/CollapseButton";
 import useApi from "../hooks/api";
-import useTheme from "../hooks/theme";
 import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
-	const { color } = useTheme();
 	const [notes, setNotes] = useState([] as Note[]);
 
 	useEffect(() => {
