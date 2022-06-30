@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 import { COLORS } from "../utils/color";
-import { theme } from "../../App";
+import { themeContext } from "../utils/context";
 
 
 export default function useTheme() {
-    const { dark, setDark } = useContext(theme)
+    const { dark, setDark } = useContext(themeContext)
     return { color: dark ? COLORS.colorDark : COLORS.colorLight, modify: setDark };
 }
