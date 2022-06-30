@@ -9,7 +9,7 @@ import useUser from "../hooks/user";
 import { Note } from "../utils/note";
 
 export default function Perso({ navigation }: { navigation: any }) {
-    const notes = useNotes() as Note[];
+    const { notes, loading, error } = useNotes();
     const { color } = useTheme();
     const { user, setUser } = useUser();
 
@@ -33,11 +33,11 @@ export default function Perso({ navigation }: { navigation: any }) {
             />
             <BasicButton
                 textStyle={{
-                    color: color.success
+                    color: "white"
                 }}
                 onPress={handleConnect}
             >
-                Change your name
+                Connect
             </BasicButton>
             {user !== "" && (
                 <CollapseButton notes={filteredNotes} />

@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default async function useApi(method = "GET", route: string, body = {}) {
+    const [data, setData] = useState([] as any[])
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     let response;
     try {
         if (method === "GET" || method === "HEAD") {
@@ -23,8 +26,16 @@ export default async function useApi(method = "GET", route: string, body = {}) {
         }
 
         const json = await response.json();
-        return json;
+        setData(json)
+        setLoading(false)
     } catch (error) {
-        console.error(error);
+        console.log(error)
+        setError(true)
+    }
+
+    return {
+        data: data,
+        loading: loading,
+        error: error
     }
 }
