@@ -8,6 +8,7 @@ export default function BasicCheckBox(
         { children?: ReactNode, value?: boolean, onValueChange?: (input: boolean) => void, disabled?: boolean, style?: ViewStyle }
 ) {
     const { color } = useTheme();
+
     return (
         <View
             style={{
