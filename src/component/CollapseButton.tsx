@@ -23,7 +23,7 @@ export default function CollapseButton({ notes = [] }: { notes: Note[] }) {
 	});
 
 	return (
-		<ScrollView>
+		<View>
 			{noteDisplay.map((note, index) => {
 				return (
 					<TouchableOpacity
@@ -56,7 +56,7 @@ export default function CollapseButton({ notes = [] }: { notes: Note[] }) {
 					</TouchableOpacity>
 				);
 			})}
-		</ScrollView>
+		</View>
 	);
 }
 

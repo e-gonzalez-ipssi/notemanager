@@ -19,7 +19,5 @@ export default function useNotes() {
         fetchData();
     }, [])
 
-    return {
-        notes: notes as Note[],
-    }
+    return notes
 }

@@ -4,9 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
 import useNotes from "../hooks/notes";
+import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
-	const { notes, loading, error } = useNotes();
+	const notes = useNotes() as Note[];
 	const [filtreName, setFiltreName] = useState("");
 	const [filtreTag, setFiltreTag] = useState([] as string[]);
 	const [filtreDate, setFiltreDate] = useState("");
