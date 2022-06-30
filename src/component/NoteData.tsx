@@ -1,6 +1,7 @@
 import React from "react";
 import { Note } from "../utils/note";
 import { Text, View } from "react-native";
+import Tags from "./Tags";
 
 export default function NoteData({ note }: { note: Note }) {
   return (
