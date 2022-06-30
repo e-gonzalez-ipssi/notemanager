@@ -7,10 +7,9 @@ import { Text } from "react-native";
 import useNotes from "../hooks/notes";
 import useTheme from "../hooks/theme";
 import useUser from "../hooks/user";
-import { Note } from "../utils/note";
 
 export default function Perso({ navigation }: { navigation: any }) {
-    const notes = useNotes() as Note[];
+    const { notes, loading, error } = useNotes();
     const { color } = useTheme();
     const { user, setUser } = useUser();
 

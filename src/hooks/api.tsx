@@ -25,6 +25,8 @@ export default async function useApi(method = "GET", route: string, body = {}) {
         const json = await response.json();
         return json;
     } catch (error) {
-        console.error(error);
+        return {
+            errorMessage: error
+        }
     }
 }
