@@ -22,7 +22,7 @@ export default function BasicCheckBox(
                     backgroundColor: color.secondary,
                     width: 30,
                     height: 30,
-                    borderRadius: 8
+                    borderRadius: 8,
                 }}
                 disabled={disabled}
             />

@@ -8,6 +8,7 @@ import BasicTextInput from "../component/BasicTextInput";
 import useUser from "../hooks/user";
 import useApi from "../hooks/api";
 import BasicButton from "../component/BasicButton";
+import useRegex from "../hooks/regex";
 
 export default function New({ navigation }: { navigation: any }) {
     const { color } = useTheme();
@@ -21,10 +22,10 @@ export default function New({ navigation }: { navigation: any }) {
     const { user } = useUser();
 
     const handleTags = (rawValue: string) => {
-        let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
-        let found = rawValue.match(tagRegex)
-
-        if (found) { setTags(found) }
+        let tagRegex =useRegex(rawValue);
+        if(tagRegex){
+            setTags(tagRegex);
+        }
     }
 
     useEffect(() => {
@@ -102,6 +103,7 @@ export default function New({ navigation }: { navigation: any }) {
                     setInput={handleTags}
                     placeholder="Ex: Pain au chocolat"
                 />
+
                 <ImageSelector
                     onImage={setImage}
                 />

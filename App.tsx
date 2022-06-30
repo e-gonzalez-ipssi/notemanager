@@ -12,7 +12,6 @@ export const theme = createContext({})
 
 export default function App() {
 	const [dark, setDark] = useState(false);
-
 	return (
 		<theme.Provider value={{ dark, setDark }}>
 			<NavigationContainer>
