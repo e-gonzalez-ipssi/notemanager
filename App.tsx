@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './src/features/Home';
@@ -9,7 +9,6 @@ import { Note } from './src/utils/note';
 import { themeContext, userContext, notesContext } from './src/utils/context';
 
 const Tab = createBottomTabNavigator();
-
 
 export default function App() {
 	const [dark, setDark] = useState(false);

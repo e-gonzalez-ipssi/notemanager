@@ -44,6 +44,7 @@ export default function New({ navigation }: { navigation: any }) {
             text: texte,
             image: image,
         });
+        navigation.navigate("Home")
     };
 
     return (
