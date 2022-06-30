@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { TextInput, FlexStyle, Keyboard, ColorPropType } from 'react-native';
+import React from 'react';
+import { TextInput, FlexStyle } from 'react-native';
 import useTheme from "../hooks/theme";
 
 export default function BasicTextInput({ style = {}, placeholder = "Recherche", multiline = false, setInput = () => { } }:

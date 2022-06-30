@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SearchBar from "../component/BasicTextInput";
-import ThemeButton from "../component/ThemeButton";
+import BasicTextInput from "../component/BasicTextInput";
+import CollapseButton from "../component/CollapseButton";
 import useApi from "../hooks/api";
-import useTheme from "../hooks/theme";
 import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
-    const { color } = useTheme();
     const [notes, setNotes] = useState([] as Note[]);
     const [search, setSearch] = useState("");
     const [filtreName, setFiltreName] = useState("");
@@ -53,31 +51,23 @@ export default function Home({ navigation }: { navigation: any }) {
     });
     */
     filteredNotes = filteredNotes.filter(note =>{
-        return note.created_date.includes(filtreName);
+        return note.creation_date.includes(filtreDate);
     }
     );
     
     return (
         <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
             <ScrollView>
-                <ThemeButton />
-                <Text style={{ color: color.text }}>
-                    Page Home
-                </Text>
                 <Text>Recherche</Text>
-                <SearchBar setInput={setSearch}/>
+                <BasicTextInput setInput={setSearch}/>
                 <Text>Filtre nom</Text>
-                <SearchBar setInput={setFiltreName} placeholder="Ex: Test, Esteban, Maths" />
+                <BasicTextInput setInput={setFiltreName} placeholder="Ex: Test, Esteban, Maths" />
                 <Text>Filtre tag</Text>
-                <SearchBar setInput={setFiltreTag} placeholder="Ex: Test, Esteban, Maths" />
+                <BasicTextInput setInput={setFiltreTag} placeholder="Ex: Test, Esteban, Maths" />
                 <Text>Filtre date</Text>
-                <SearchBar setInput={setFiltreDate} placeholder="TODO" />
+                <BasicTextInput setInput={setFiltreDate} placeholder="TODO" />
                 
-                {filteredNotes.map((note, index) => {
-                    return (
-                        <Text key={index}>{note.title}</Text>
-                    );
-                })}
+                <CollapseButton notes={filteredNotes}></CollapseButton>
                 
                 
             </ScrollView>

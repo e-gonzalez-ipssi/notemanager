@@ -47,7 +47,14 @@ export default function New({ navigation }: { navigation: any }) {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
+        <SafeAreaView
+            style={{
+                flex: 1,
+                marginTop: 20,
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}
+        >
             <ScrollView>
                 <Text>
                     Page New
