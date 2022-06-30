@@ -6,7 +6,6 @@ import CollapseButton from "../component/CollapseButton";
 import useNotes from "../hooks/notes";
 import useTheme from "../hooks/theme";
 import useUser from "../hooks/user";
-import { Note } from "../utils/note";
 
 export default function Perso({ navigation }: { navigation: any }) {
     const { notes, loading, error } = useNotes();
