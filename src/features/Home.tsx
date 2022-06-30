@@ -8,7 +8,7 @@ import useNotes from "../hooks/notes";
 import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
-	const notes = useNotes();
+	const notes = useNotes() as Note[];
 	const [filtreName, setFiltreName] = useState("");
 	const [filtreTag, setFiltreTag] = useState([] as string[]);
 	const [filtreDate, setFiltreDate] = useState("");
@@ -26,29 +26,18 @@ export default function Home({ navigation }: { navigation: any }) {
 		if (note.author) {
 			return note.author.includes(filtreName);
 		}
-	}
-	);
-	/*tags.forEach(tag => {
-		filteredNotes = notes.filter(note =>
-			note.tags.forEach(element => {
-				if(tag === element)
-					note.tags.includes(element);
-			});
-		    
-		);
 	});
-	*/
+
 	filteredNotes = filteredNotes.filter(note => {
 		return note.creation_date.includes(filtreDate);
-	}
-	);
+	});
 
 	filteredNotes = notes.filter(note => {
 		if (note.author) {
 			return note.author.includes(filtreName);
 		}
-	}
-	);
+	});
+
 	if (filtreTag.length !== 0) {
 		filteredNotes = filteredNotes.filter(note => {
 			var BreakException = {};
@@ -67,13 +56,6 @@ export default function Home({ navigation }: { navigation: any }) {
 				if (e !== BreakException) throw e;
 			}
 		})
-		console.log(filteredNotes);
-		filteredNotes = filteredNotes.filter(note => {
-			if (note.creation_date) {
-				return note.creation_date.includes(filtreDate);
-			}
-		}
-		);
 	}
 	return (
 		<SafeAreaView style={{ flex: 1, marginTop: 20 }}>

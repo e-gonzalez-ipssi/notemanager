@@ -5,6 +5,7 @@ import Home from './src/features/Home';
 import New from './src/features/New';
 import Perso from './src/features/Perso';
 import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons'
+import { Note } from './src/utils/note';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,11 +13,13 @@ export const theme = createContext({})
 
 export default function App() {
 	const [dark, setDark] = useState(false);
+	const [user, setUser] = useState("");
+	const [notes, setNotes] = useState([] as Note[]);
 
 	// TODO : faire un state pour la connexion / avoir 2 pages
 
 	return (
-		<theme.Provider value={{ dark, setDark }}>
+		<theme.Provider value={{ dark, setDark, user, setUser, notes, setNotes }}>
 			<NavigationContainer>
 				<Tab.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
 					<Tab.Screen

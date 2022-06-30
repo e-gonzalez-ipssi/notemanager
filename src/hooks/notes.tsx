@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import useApi from "./api";
+import { theme } from "../../App";
 import { Note } from "../utils/note";
 
 export default function useNotes() {
-    const [notes, setNotes] = useState([] as Note[]);
+    const { notes, setNotes } = useContext(theme as any);
     let interval: any;
 
     useEffect(() => {

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { theme } from "../../App";
 
 export default function useUser() {
-    const [user, setUser] = useState("");
+    const { user, setUser } = useContext(theme);
 
     const retrieveHistory = async () => {
         const userStored = await AsyncStorage.getItem("user");
