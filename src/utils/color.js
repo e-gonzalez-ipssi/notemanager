@@ -2,10 +2,10 @@ export const COLORS = {
   colorLight: {
     theme: false,
     background: "#FEFFFD",
-    primary: "#27569C",
-    secondary: "#CCE0FB", //Background
-    text: "#002559", //First plan
-    extra: "#C8B0C6",
+    primary: "#fffff",
+    secondary: "#327389", //Background
+    text: "#ffff", //First plan
+    extra: "#0000",
     success: "#009E64",
     error: "#EE0017",
   },

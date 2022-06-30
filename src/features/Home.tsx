@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from "react";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CollapseButton from "../component/CollapseButton";
 import useApi from "../hooks/api";
 import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
-	const [notes, setNotes] = useState([] as Note[]);
+  const [notes, setNotes] = useState([] as Note[]);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const response = await useApi("GET", "note");
-			setNotes(response);
-		};
-		fetchData();
-	}, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await useApi("GET", "note");
+      setNotes(response);
+    };
+    fetchData();
+  }, []);
 
-	return (
-		<SafeAreaView style={{
-			flex: 1,
-			marginTop: 20,
-			alignItems: 'center',
-			justifyContent: 'center',
-			height: "100%"
-		}}>
-			<CollapseButton notes={notes}></CollapseButton>
-		</SafeAreaView>
-	);
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        marginTop: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+      }}
+    >
+      <View style={{ justifyContent: "center", padding: 20 }}>
+        <CollapseButton notes={notes}></CollapseButton>
+      </View>
+    </SafeAreaView>
+  );
 }
