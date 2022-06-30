@@ -4,21 +4,20 @@ import { theme } from "../../App";
 import { Note } from "../utils/note";
 
 export default function useNotes() {
-    const { notes, setNotes } = useContext(theme as any);
+  const { notes, setNotes } = useContext(theme as any);
 
-    const fetchData = async () => {
-        const data = await useApi("GET", "note")
-        if (data.errorMessage) {
-            console.log(data.errorMessage)
-        }
-        else {
-            setNotes(data)
-        }
+  const fetchData = async () => {
+    const data = await useApi("GET", "note");
+    if (data.errorMessage) {
+      console.log(data.errorMessage);
+    } else {
+      setNotes(data.reverse());
     }
+  };
 
-    useEffect(() => {
-        fetchData();
-    }, [])
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    return { notes: notes as Note[], fetchData }
+  return { notes: notes as Note[], fetchData };
 }
