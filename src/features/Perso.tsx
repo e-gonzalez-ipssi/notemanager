@@ -4,14 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import BasicButton from "../component/BasicButton";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
+import CustomScrollView from "../component/CustomScrollView";
 import useNotes from "../hooks/notes";
-import useTheme from "../hooks/theme";
 import useUser from "../hooks/user";
 import { Note } from "../utils/note";
 
 export default function Perso({ navigation }: { navigation: any }) {
-    const notes = useNotes() as Note[];
-    const { color } = useTheme();
+    const { notes, fetchData } = useNotes();
     const { user, setUser } = useUser();
 
     const [value, setValue] = useState("");
@@ -40,11 +39,9 @@ export default function Perso({ navigation }: { navigation: any }) {
             >
                 Connect
             </BasicButton>
-            {user !== "" && (
-                <ScrollView>
-                    <CollapseButton notes={filteredNotes}></CollapseButton>
-                </ScrollView>
-            )}
+            <CustomScrollView refresh={fetchData}>
+                <CollapseButton notes={filteredNotes}></CollapseButton>
+            </CustomScrollView>
         </SafeAreaView>
     )
 }

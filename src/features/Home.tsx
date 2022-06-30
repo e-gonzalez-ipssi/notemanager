@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { ScrollView, Text } from "react-native";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
+import CustomScrollView from "../component/CustomScrollView";
 import useNotes from "../hooks/notes";
-import { Note } from "../utils/note";
 
 export default function Home({ navigation }: { navigation: any }) {
-	const notes = useNotes() as Note[];
+	const { notes, fetchData } = useNotes();
 	const [filtreName, setFiltreName] = useState("");
 	const [filtreTag, setFiltreTag] = useState([] as string[]);
 	const [filtreDate, setFiltreDate] = useState("");
@@ -58,17 +58,15 @@ export default function Home({ navigation }: { navigation: any }) {
 	}
 	return (
 		<SafeAreaView style={{ flex: 1, marginTop: 20 }}>
-			<ScrollView>
-				<Text>Filtre nom</Text>
-				<BasicTextInput setInput={setFiltreName} placeholder="Ex: Test, Esteban, Maths" />
-				<Text>Filtre tag</Text>
-				<BasicTextInput setInput={handleTags} placeholder="Ex: Test, Esteban, Maths" />
-				<Text>Filtre date</Text>
-				<BasicTextInput setInput={setFiltreDate} placeholder="2022" />
-				<ScrollView>
-					<CollapseButton notes={filteredNotes}></CollapseButton>
-				</ScrollView>
-			</ScrollView>
-		</SafeAreaView>
+			<Text>Filtre nom</Text>
+			<BasicTextInput setInput={setFiltreName} placeholder="Ex: Test, Esteban, Maths" />
+			<Text>Filtre tag</Text>
+			<BasicTextInput setInput={handleTags} placeholder="Ex: Test, Esteban, Maths" />
+			<Text>Filtre date</Text>
+			<BasicTextInput setInput={setFiltreDate} placeholder="2022" />
+			<CustomScrollView refresh={fetchData}>
+				<CollapseButton notes={filteredNotes}></CollapseButton>
+			</CustomScrollView>
+		</SafeAreaView >
 	)
 }
