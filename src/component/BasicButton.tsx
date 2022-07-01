@@ -4,12 +4,12 @@ import useTheme from "../hooks/theme";
 
 export default function BasicButton({
     children,
-    onPress,
+    onPress = () => { },
     style = {},
     textStyle = {},
 }: {
     children?: ReactNode;
-    onPress: () => void;
+    onPress?: () => void;
     style?: ViewStyle;
     textStyle?: TextStyle;
 }) {

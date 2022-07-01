@@ -7,13 +7,13 @@ export default function BasicTextInput({
   placeholder = "Recherche",
   placeHolderTextColor,
   multiline = false,
-  setInput = () => {},
+  setInput = () => { },
 }: {
   style?: TextStyle;
   placeholder?: string;
   placeHolderTextColor?: string;
   multiline?: boolean;
-  setInput: (input: string) => void;
+  setInput?: (input: string) => void;
 }) {
   const { color } = useTheme();
 

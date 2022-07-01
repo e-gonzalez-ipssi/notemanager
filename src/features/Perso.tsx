@@ -7,7 +7,6 @@ import CollapseButton from "../component/CollapseButton";
 import CustomScrollView from "../component/CustomScrollView";
 import useNotes from "../hooks/notes";
 import useUser from "../hooks/user";
-import { Note } from "../utils/note";
 
 export default function Perso({ navigation }: { navigation: any }) {
     const { notes, fetchData } = useNotes();
