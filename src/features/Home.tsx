@@ -8,7 +8,8 @@ import useNotes from "../hooks/notes";
 
 export default function Home({ navigation }: { navigation: any }) {
   const { notes, fetchData } = useNotes();
-  const [filtreName, setFiltreName] = useState("");
+  const [filtreTitle, setFiltreTitle] = useState("");
+  const [filtreAuthor, setfiltreAuthor] = useState("");
   const [filtreTag, setFiltreTag] = useState([] as string[]);
   const [filtreDate, setFiltreDate] = useState("");
 
@@ -25,8 +26,12 @@ export default function Home({ navigation }: { navigation: any }) {
   let filteredNotes = [];
 
   filteredNotes = notes.filter((note) => {
+    return note.title.includes(filtreTitle);
+  });
+
+  filteredNotes = filteredNotes.filter((note) => {
     if (note.author && note.anonym === false) {
-      return note.author.toLowerCase().includes(filtreName.toLowerCase());
+      return note.author.toLowerCase().includes(filtreAuthor.toLowerCase());
     }
     return false;
   });
@@ -57,9 +62,15 @@ export default function Home({ navigation }: { navigation: any }) {
 
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
-      <Text style={styles.texte}>Filtre nom</Text>
+      <Text style={styles.texte}>Filtre titre</Text>
       <BasicTextInput
-        setInput={setFiltreName}
+        setInput={setFiltreTitle}
+        placeholder="Ex: Test"
+        style={{ alignItems: "center" }}
+      />
+      <Text style={styles.texte}>Filtre auteur</Text>
+      <BasicTextInput
+        setInput={setfiltreAuthor}
         placeholder="Ex: Test"
         style={{ alignItems: "center" }}
       />
