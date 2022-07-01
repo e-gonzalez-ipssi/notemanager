@@ -1,7 +1,15 @@
 import React, { ReactNode } from "react";
 import { View, ScrollView, ViewStyle } from "react-native";
 
-export default function CustomScrollView({ children, refresh = () => { }, style = {} }: { children?: ReactNode, refresh?: () => void, style?: ViewStyle }) {
+export default function CustomScrollView({
+    children,
+    refresh = () => { },
+    style = {}
+}: {
+    children?: ReactNode,
+    refresh?: () => void,
+    style?: ViewStyle
+}) {
     return (
         <View style={{ height: "100%" }}>
             <ScrollView

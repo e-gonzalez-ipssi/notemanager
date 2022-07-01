@@ -10,7 +10,7 @@ export default function NoteData({ note }: { note: Note }) {
         Auteur : {note.anonym ? "Anonymes" : note.author}
       </Text>
       <Text style={{ color: "#ffff" }}>Note : {note.text}</Text>
-      <Tags tags={note.tags} />
+      {note.tags.length > 0 && <Tags tags={note.tags} />}
       <Text style={{ color: "#ffff" }}>
         Date de création : {note.creation_date}
       </Text>
