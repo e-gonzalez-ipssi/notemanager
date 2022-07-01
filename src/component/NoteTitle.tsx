@@ -66,7 +66,7 @@ export default function NoteTitle({ note }: { note: Note }) {
             position: "absolute",
             right: -50,
           }}
-          textStyle={{ color: "white" }}
+          textStyle={{ color: "white", fontWeight: "900" }}
         >
           X
         </BasicButton>
