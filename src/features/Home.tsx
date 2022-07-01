@@ -13,12 +13,13 @@ export default function Home({ navigation }: { navigation: any }) {
   const [filtreDate, setFiltreDate] = useState("");
 
   const handleTags = (rawValue: string) => {
-    let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
-    let found = rawValue.match(tagRegex);
-
-    if (found) {
-      setFiltreTag(found);
+    if (rawValue.length === 0) {
+      setFiltreTag([]);
+      return;
     }
+
+    const arrayofTags = rawValue.split(",").map((item) => item.trim());
+    setFiltreTag(arrayofTags);
   };
 
   let filteredNotes = [];
@@ -53,6 +54,7 @@ export default function Home({ navigation }: { navigation: any }) {
       }
     });
   }
+  console.log(filtreTag);
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
       <Text style={styles.texte}>Filtre nom</Text>
