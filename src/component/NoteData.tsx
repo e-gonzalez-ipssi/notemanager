@@ -7,7 +7,7 @@ export default function NoteData({ note }: { note: Note }) {
   return (
     <View>
       <Text style={{ color: "#ffff" }}>
-        Autheur : {note.anonym ? "Anonymes" : note.author}
+        Auteur : {note.anonym ? "Anonymes" : note.author}
       </Text>
       <Text style={{ color: "#ffff" }}>Note : {note.text}</Text>
       {note.tags.length > 0 && <Tags tags={note.tags} />}

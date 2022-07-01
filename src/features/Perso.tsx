@@ -9,41 +9,41 @@ import useNotes from "../hooks/notes";
 import useUser from "../hooks/user";
 
 export default function Perso({ navigation }: { navigation: any }) {
-    const { notes, fetchData } = useNotes();
-    const { user, setUser } = useUser();
+  const { notes, fetchData } = useNotes();
+  const { user, setUser } = useUser();
 
-    const [value, setValue] = useState("");
+  const [value, setValue] = useState("");
 
-    const handleConnect = () => {
-        setUser(value)
+  const handleConnect = () => {
+    setUser(value);
+  };
+
+  let filteredNotes = notes.filter((note) => {
+    if (note.author) {
+      return note.author.toLowerCase() === user.toLowerCase();
     }
+    return false;
+  });
 
-    let filteredNotes = notes.filter((note) => {
-        if (note.author) {
-            return note.author.toLowerCase() === user.toLowerCase();
-        }
-        return false;
-    });
+  filteredNotes = user === "" ? [] : filteredNotes;
 
-    filteredNotes = user === "" ? [] : filteredNotes;
-
-    return (
-        <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
-            <BasicTextInput
-                placeholder={user === "" ? "Enter your name" : user}
-                setInput={setValue}
-            />
-            <BasicButton
-                textStyle={{
-                    color: "white"
-                }}
-                onPress={handleConnect}
-            >
-                Connect
-            </BasicButton>
-            <CustomScrollView refresh={fetchData}>
-                <CollapseButton notes={filteredNotes}></CollapseButton>
-            </CustomScrollView>
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
+      <BasicTextInput
+        placeholder={user === "" ? "Enter your name" : user}
+        setInput={setValue}
+      />
+      <BasicButton
+        textStyle={{
+          color: "white",
+        }}
+        onPress={handleConnect}
+      >
+        Connect
+      </BasicButton>
+      <CustomScrollView refresh={fetchData}>
+        <CollapseButton notes={filteredNotes}></CollapseButton>
+      </CustomScrollView>
+    </SafeAreaView>
+  );
 }
