@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import CheckBox from "expo-checkbox";
-import { View, ViewStyle, Text } from "react-native";
+import { View, ViewStyle, Text, TextStyle } from "react-native";
 import useTheme from "../hooks/theme";
 
 export default function BasicCheckBox({
@@ -9,12 +9,14 @@ export default function BasicCheckBox({
     onValueChange = () => { },
     disabled = false,
     style = {},
+    textStyle = {},
 }: {
     children?: ReactNode;
     value?: boolean;
     onValueChange?: (input: boolean) => void;
     disabled?: boolean;
     style?: ViewStyle;
+    textStyle?: TextStyle;
 }) {
     const { color } = useTheme();
     return (
@@ -42,6 +44,7 @@ export default function BasicCheckBox({
                     color: color.text,
                     textAlign: "center",
                     marginLeft: 5,
+                    ...textStyle
                 }}
             >
                 {children}

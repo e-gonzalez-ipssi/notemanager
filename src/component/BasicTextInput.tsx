@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput, TextStyle } from "react-native";
 import useTheme from "../hooks/theme";
 
 export default function BasicTextInput({
   style = {},
+  input = "",
+  setInput = () => { },
   placeholder = "Recherche",
   placeHolderTextColor,
   multiline = false,
-  setInput = () => { },
 }: {
   style?: TextStyle;
+  input?: string;
+  setInput?: (input: string) => void;
   placeholder?: string;
   placeHolderTextColor?: string;
   multiline?: boolean;
-  setInput?: (input: string) => void;
 }) {
   const { color } = useTheme();
+  const [value, setValue] = useState(input);
+
+  useEffect(() => {
+    setInput(value)
+  }, [value]);
 
   return (
     <TextInput
       placeholder={placeholder}
-      onChangeText={setInput}
+      value={value}
+      onChangeText={setValue}
       multiline={multiline}
       placeholderTextColor={
         placeHolderTextColor ? placeHolderTextColor : color.background

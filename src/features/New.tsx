@@ -15,18 +15,13 @@ export default function New({ navigation }: { navigation: any }) {
   const [auteur, setAuteur] = useState("");
   const [titre, setTitre] = useState("");
   const [texte, setTexte] = useState("");
-  const [tags, setTags] = useState([] as string[]);
+  const [tags, setTags] = useState("");
   const [image, setImage] = useState("");
 
   const { user } = useUser();
 
   const handleTags = (rawValue: string) => {
-    let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
-    let found = rawValue.match(tagRegex);
-
-    if (found) {
-      setTags(found);
-    }
+    setTags(rawValue);
   };
 
   useEffect(() => {
@@ -36,11 +31,14 @@ export default function New({ navigation }: { navigation: any }) {
   }, [auteur]);
 
   const handleConfirm = async () => {
+    let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
+    let found = tags.match(tagRegex);
+
     await useApi("POST", "note", {
       title: titre,
       author: auteur,
       anonym: anonymous,
-      tags: tags,
+      tags: found,
       text: texte,
       image: image,
     });

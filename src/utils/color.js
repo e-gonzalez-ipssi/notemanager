@@ -2,6 +2,7 @@ export const COLORS = {
   colorLight: {
     theme: false,
     background: "#FEFFFD",
+    placeholder: "#bcbcbc",
     primary: "#fffff",
     secondary: "#327389",
     text: "#ffff",
@@ -12,6 +13,7 @@ export const COLORS = {
   colorDark: {
     theme: true,
     background: "#666769",
+    placeholder: "#bcbcbc",
     primary: "#27569C",
     secondary: "#002559",
     text: "#CCE0FB",

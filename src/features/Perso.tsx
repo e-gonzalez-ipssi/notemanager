@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { ScrollView, Text } from "react-native";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BasicButton from "../component/BasicButton";
-import BasicModal from "../component/BasicModal";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
 import CustomScrollView from "../component/CustomScrollView";
