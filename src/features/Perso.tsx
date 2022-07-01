@@ -20,12 +20,12 @@ export default function Perso({ navigation }: { navigation: any }) {
 
   let filteredNotes = notes.filter((note) => {
     if (note.author) {
-      return note.author.toLowerCase().includes(user.toLowerCase());
+      return note.author.toLowerCase() === user.toLowerCase();
     }
     return false;
   });
 
-  filteredNotes = value === "" ? [] : filteredNotes;
+  filteredNotes = user === "" ? [] : filteredNotes;
 
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
