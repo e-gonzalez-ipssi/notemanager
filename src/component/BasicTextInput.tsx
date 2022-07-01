@@ -32,6 +32,7 @@ export default function BasicTextInput({
         marginRight: 10,
         borderRadius: 8,
         width: 340,
+        color: color.background,
         ...style,
       }}
     />
