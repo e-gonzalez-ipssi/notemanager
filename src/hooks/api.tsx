@@ -3,7 +3,7 @@ import React from "react";
 export default async function useApi(method = "GET", route: string, body = {}) {
     let response;
     try {
-        if (method === "GET" || method === "HEAD") {
+        if (method === "GET" || method === "HEAD" || method === "DELETE") {
             response = await fetch("https://m66nqp6pe8.eu-west-1.awsapprunner.com/" + route, {
                 method: method,
                 headers: {
@@ -21,8 +21,13 @@ export default async function useApi(method = "GET", route: string, body = {}) {
                 body: JSON.stringify(body)
             });
         }
+        let json;
+        try {
+            json = await response.json();
+        } catch (error) {
+            json = { errorMessage: "No json result" }
+        }
 
-        const json = await response.json();
         return json;
     } catch (error) {
         return {
