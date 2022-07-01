@@ -23,12 +23,13 @@ export default function CollapseButton({ notes = [] }: { notes: Note[] }) {
   });
 
   return (
-    <ScrollView>
+    <ScrollView style={{ padding: 10 }}>
       {noteDisplay.map((note, index) => {
         return (
           <TouchableOpacity
             key={index}
             style={{
+              padding: 10,
               marginBottom: 30,
               backgroundColor: color.secondary,
               width: "100%",
