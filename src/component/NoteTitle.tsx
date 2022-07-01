@@ -1,10 +1,21 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
+import BasicButton from "./BasicButton";
 import useTheme from "../hooks/theme";
+import useUser from "../hooks/user";
+import useApi from "../hooks/api";
 import { Note } from "../utils/note";
 
 export default function NoteTitle({ note }: { note: Note }) {
   const { color } = useTheme();
+  const { user } = useUser();
+
+  const isMyNote = user === note.author;
+
+  const handleDelete = async () => {
+    // delete note
+    const message = await useApi("DELETE", "note/" + note._id);
+  };
 
   const image = note.image ? (
     <Image
@@ -47,6 +58,15 @@ export default function NoteTitle({ note }: { note: Note }) {
         {note.title}
       </Text>
       {image}
+      {isMyNote && (
+        <BasicButton
+          onPress={handleDelete}
+          style={{ backgroundColor: "red" }}
+          textStyle={{ color: "white" }}
+        >
+          X
+        </BasicButton>
+      )}
     </View>
   );
 }
