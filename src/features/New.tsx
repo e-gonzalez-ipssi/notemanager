@@ -151,5 +151,6 @@ const styles = StyleSheet.create({
   texteInput: {
     backgroundColor: "#ffff",
     width: "70%",
+    color: "#327389",
   },
 });
