@@ -3,8 +3,8 @@ export const COLORS = {
     theme: false,
     background: "#FEFFFD",
     primary: "#fffff",
-    secondary: "#327389", //Background
-    text: "#ffff", //First plan
+    secondary: "#327389",
+    text: "#ffff",
     extra: "#0000",
     success: "#009E64",
     error: "#EE0017",

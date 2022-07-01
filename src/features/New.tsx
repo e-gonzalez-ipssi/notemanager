@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useTheme from "../hooks/theme";
 import ImageSelector from "../component/ImageSelector";
@@ -10,129 +10,146 @@ import useApi from "../hooks/api";
 import BasicButton from "../component/BasicButton";
 
 export default function New({ navigation }: { navigation: any }) {
-    const { color } = useTheme();
-    const [anonymous, setAnonymous] = useState(false);
-    const [auteur, setAuteur] = useState("");
-    const [titre, setTitre] = useState("");
-    const [texte, setTexte] = useState("");
-    const [tags, setTags] = useState([] as string[]);
-    const [image, setImage] = useState("");
+  const { color } = useTheme();
+  const [anonymous, setAnonymous] = useState(false);
+  const [auteur, setAuteur] = useState("");
+  const [titre, setTitre] = useState("");
+  const [texte, setTexte] = useState("");
+  const [tags, setTags] = useState([] as string[]);
+  const [image, setImage] = useState("");
 
-    const { user } = useUser();
+  const { user } = useUser();
 
-    const handleTags = (rawValue: string) => {
-        let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
-        let found = rawValue.match(tagRegex);
+  const handleTags = (rawValue: string) => {
+    let tagRegex = /[^,\s][^\,]*[^,\s]*/gm;
+    let found = rawValue.match(tagRegex);
 
-        if (found) {
-            setTags(found);
-        }
-    };
+    if (found) {
+      setTags(found);
+    }
+  };
 
-    useEffect(() => {
-        if (user !== "" && auteur === "") {
-            setAuteur(user);
-        }
-    }, [auteur]);
+  useEffect(() => {
+    if (user !== "" && auteur === "") {
+      setAuteur(user);
+    }
+  }, [auteur]);
 
-    const handleConfirm = async () => {
-        await useApi("POST", "note", {
-            title: titre,
-            author: auteur,
-            anonym: anonymous,
-            tags: tags,
-            text: texte,
-            image: image,
-        });
-        navigation.navigate("Home")
-    };
+  const handleConfirm = async () => {
+    await useApi("POST", "note", {
+      title: titre,
+      author: auteur,
+      anonym: anonymous,
+      tags: tags,
+      text: texte,
+      image: image,
+    });
+    navigation.navigate("Home");
+  };
 
-    return (
-        <SafeAreaView
-            style={{
-                flex: 1,
-                marginTop: 0,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#327389",
-            }}
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        marginTop: 0,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#327389",
+      }}
+    >
+      <ScrollView>
+        <Text
+          style={{
+            textAlign: "center",
+            fontSize: 30,
+            color: color.background,
+            fontWeight: "900",
+            margin: 40,
+            marginBottom: 20,
+          }}
         >
-            <ScrollView>
-                <Text
-                    style={{
-                        textAlign: "center",
-                        fontSize: 30,
-                        color: color.text,
-                        fontWeight: "900",
-                        margin: 40,
-                    }}
-                >
-                    {auteur}
-                </Text>
-                <View
-                    style={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <BasicTextInput
-                        setInput={setAuteur}
-                        style={{
-                            backgroundColor: "#ffff",
-                            width: "70%",
-                        }}
-                        placeholder={user === "" ? "Saisir un nom" : "Changer de nom ?"}
-                    />
-                    <BasicCheckBox
-                        style={{
-                            margin: 30,
-                        }}
-                        onValueChange={setAnonymous}
-                        value={anonymous}
-                    >
-                        Post as Anonymous
-                    </BasicCheckBox>
-                    <BasicTextInput
-                        setInput={setTitre}
-                        style={{
-                            backgroundColor: "#ffff",
-                            marginBottom: 30,
-                            width: "70%",
-                        }}
-                        placeholder="Titre de la note"
-                    />
-                    <BasicTextInput
-                        setInput={setTexte}
-                        placeholder="Votre note"
-                        style={{
-                            height: 50,
-                            backgroundColor: "#ffff",
-                            marginBottom: 30,
-                            maxWidth: "70%",
-                            width: "70%",
-                        }}
-                        multiline={true}
-                    />
-                    <BasicTextInput
-                        style={{
-                            backgroundColor: "#ffff",
-                            marginBottom: 30,
-                            width: "70%",
-                        }}
-                        setInput={handleTags}
-                        placeholder="Tags"
-                    />
-                    <ImageSelector onImage={setImage} />
-                    <BasicButton
-                        style={{
-                            backgroundColor: "#ffff",
-                        }}
-                        onPress={handleConfirm}
-                    >
-                        Créer la note
-                    </BasicButton>
-                </View>
-            </ScrollView>
-        </SafeAreaView>
-    );
+          Votre nom
+        </Text>
+        <Text
+          style={{
+            textAlign: "center",
+            fontSize: 30,
+            color: color.background,
+            fontWeight: "900",
+            marginBottom: 20,
+          }}
+        >
+          {user}
+        </Text>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <BasicTextInput
+            setInput={setAuteur}
+            style={styles.texteInput}
+            placeholder={user === "" ? "Saisir un nom" : "Changer de nom ?"}
+            placeHolderTextColor={color.secondary}
+          />
+          <BasicCheckBox
+            style={{
+              margin: 30,
+            }}
+            onValueChange={setAnonymous}
+            value={anonymous}
+          >
+            Post as Anonymous
+          </BasicCheckBox>
+          <BasicTextInput
+            setInput={setTitre}
+            style={{
+              ...styles.texteInput,
+              marginBottom: 30,
+            }}
+            placeholder="Titre de la note"
+            placeHolderTextColor={color.secondary}
+          />
+          <BasicTextInput
+            setInput={setTexte}
+            placeholder="Votre note"
+            placeHolderTextColor={color.secondary}
+            style={{
+              ...styles.texteInput,
+              height: 50,
+              marginBottom: 30,
+              maxWidth: "70%",
+            }}
+            multiline={true}
+          />
+          <BasicTextInput
+            style={{
+              ...styles.texteInput,
+              marginBottom: 30,
+            }}
+            setInput={handleTags}
+            placeholder="Tags"
+            placeHolderTextColor={color.secondary}
+          />
+          <ImageSelector onImage={setImage} />
+          <BasicButton
+            style={{
+              backgroundColor: "#ffff",
+            }}
+            onPress={handleConfirm}
+          >
+            Créer la note
+          </BasicButton>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  texteInput: {
+    backgroundColor: "#ffff",
+    width: "70%",
+  },
+});

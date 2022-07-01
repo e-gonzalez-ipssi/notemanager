@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BasicTextInput from "../component/BasicTextInput";
 import CollapseButton from "../component/CollapseButton";
@@ -55,21 +55,34 @@ export default function Home({ navigation }: { navigation: any }) {
   }
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
-      <Text>Filtre nom</Text>
+      <Text style={styles.texte}>Filtre nom</Text>
       <BasicTextInput
         setInput={setFiltreName}
-        placeholder="Ex: Test, Esteban, Maths"
+        placeholder="Ex: Test"
+        style={{ alignItems: "center" }}
       />
-      <Text>Filtre tag</Text>
+      <Text style={styles.texte}>Filtre tag</Text>
       <BasicTextInput
         setInput={handleTags}
         placeholder="Ex: Test, Esteban, Maths"
+        style={{ alignItems: "center" }}
       />
-      <Text>Filtre date</Text>
-      <BasicTextInput setInput={setFiltreDate} placeholder="2022" />
+      <Text style={styles.texte}>Filtre date</Text>
+      <BasicTextInput
+        setInput={setFiltreDate}
+        placeholder="2022"
+        style={{ alignItems: "center" }}
+      />
+      <Text style={styles.texte}>Notes</Text>
       <CustomScrollView refresh={fetchData}>
         <CollapseButton notes={filteredNotes}></CollapseButton>
       </CustomScrollView>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  texte: {
+    textAlign: "center",
+  },
+});
