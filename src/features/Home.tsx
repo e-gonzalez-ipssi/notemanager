@@ -54,7 +54,7 @@ export default function Home({ navigation }: { navigation: any }) {
       }
     });
   }
-  console.log(filtreTag);
+
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 20 }}>
       <Text style={styles.texte}>Filtre nom</Text>
